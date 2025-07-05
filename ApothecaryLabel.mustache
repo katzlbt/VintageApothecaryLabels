@@ -1,0 +1,74 @@
+<svg width="400" height="200" viewBox="-1.5 -1.5 203 103" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    Vintage Apothecary Label
+    - The viewBox is padded by 1.5 units (half of the outer stroke-width) to prevent clipping.
+    - The inner border is created by scaling the outer border's shape.
+  -->
+
+  <defs>
+    <!-- This defines the base shape of the label so we can reuse it -->
+    <path id="label-shape" d="M 15,0
+                              L 185,0
+                              L 200,15
+                              L 200,85
+                              L 185,100
+                              L 15,100
+                              L 0,85
+                              L 0,15
+                              Z" />
+  </defs>
+
+  <!-- Background color -->
+  <use href="#label-shape" fill="white" />
+  
+  <!-- Outer thick border -->
+  <use href="#label-shape" fill="none" stroke="black" stroke-width="3" />
+
+  <!-- Inner thin border (manually calculated path, inset by 5 units) -->
+  <path d="M 18,5
+           L 182,5
+           L 195,18
+           L 195,82
+           L 182,95
+           L 18,95
+           L 5,82
+           L 5,18
+           Z"
+        fill="none" stroke="black" stroke-width="1" />
+        
+  <!-- TEXT CONTENT -->
+  
+  {{#label}}
+  <!-- First line of text -->
+  <text x="100" y="48"
+        font-family="Copperplate, serif" font-size="{{font.label-size}}" text-anchor="middle" fill="black">
+    {{label}}
+  </text>
+  
+  <!-- Second line of text -->
+  <text x="100" y="70"
+        font-family="Copperplate, serif" font-size="{{font.sublabel-size}}" text-anchor="middle" fill="black">
+    {{sublabel}}
+  </text>
+  {{/label}}
+
+  {{#label1}}
+  <!-- 2 lines of text -->
+  <text x="100" y="30"
+        font-family="{{font.family}}, serif" font-size="{{font.label-size}}" text-anchor="middle" fill="black">
+    {{label1}}
+  </text>
+  <text x="100" y="54"
+        font-family="Copperplate, serif" font-size="{{font.label-size}}" text-anchor="middle" fill="black">
+    {{label2}}
+  </text>
+  
+  <!-- Second line of text -->
+  <text x="100" y="76"
+        font-family="Copperplate, serif" font-size="{{font.sublabel-size}}" text-anchor="middle" fill="black">
+    {{sublabel}}
+  </text>
+  {{/label1}}
+
+
+</svg>
