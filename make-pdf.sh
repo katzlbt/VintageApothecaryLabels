@@ -20,7 +20,7 @@
 
 # Directory where your 10 SVG files are located.
 # Use $1 or default "svgs" for the current directory.
-INPUT_DIR="${1:-svgs}"
+INPUT_DIR="svgs"
 
 # The name of the final output file. PDF is great for printing.
 # You can also use .png or .jpg if you prefer.
@@ -46,17 +46,18 @@ SPACING=50
 
 # --- END OF CONFIGURATION ---
 
-
 # --- SCRIPT LOGIC ---
 
 # 1. Inform the user what the script is doing.
 echo "Searching for SVG files in: $INPUT_DIR"
 
+cd "$INPUT_DIR"
+
 # 2. Find all .svg files in the input directory.
 # We use an array to handle filenames with spaces correctly.
 # The 'shopt -s nullglob' ensures that if no files are found, the array is empty.
 shopt -s nullglob
-SVG_FILES=("$INPUT_DIR"/*.svg)
+SVG_FILES=(*.svg)
 shopt -u nullglob # Turn off nullglob to restore default behavior
 
 # 3. Check if any SVG files were found.
@@ -65,7 +66,29 @@ if [ ${#SVG_FILES[@]} -eq 0 ]; then
   exit 1
 fi
 
-echo "Found ${#SVG_FILES[@]} SVG files. Creating montage..."
+# --- OPTIONS ---
+
+while getopts i:g:f: OPT; do
+    case $OPT in
+        i)
+            INPUT_DIR=$OPTARG
+            ;;
+        g)
+            TILE_GEOMETRY=$OPTARG
+            ;;
+        f) # select specific files
+            SVG_FILES=(${OPTARG//,/ });
+            ;;
+        *)
+            echo $0 "-i input directory (default: svgs)"
+            echo $0 "-g tile geometry (default: 2x5 or try -g 3x for smaller labels)"
+            echo $0 "-f file1.svg,file2.svg,file3.svg (optionally select files)"
+            exit 0
+            ;;
+    esac
+done
+
+echo "Using ${SVG_FILES[@]} SVG files. Creating montage..."
 
 # 4. The core ImageMagick 'montage' command.
 #    -density "$DENSITY": Sets the rendering resolution for the input SVGs.
@@ -90,7 +113,7 @@ montage \
 if [ $? -eq 0 ]; then
   echo "--------------------------------------------------"
   echo "Success! Your print sheet is ready."
-  echo "Output file: $OUTPUT_FILE"
+  echo "Output file: $INPUT_DIR/$OUTPUT_FILE"
   echo "--------------------------------------------------"
 else
   echo "--------------------------------------------------"

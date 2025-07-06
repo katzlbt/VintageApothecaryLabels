@@ -11,10 +11,26 @@ Create a JSON file in ./jsons containing: ```{"label":"Folia Lauri", "sublabel":
 The Filename will be used to create the SVG from the template ./ApothecaryLabel.mustache
 The font can be globally configured in the script.
 Simply run ./make-labels.sh to create the SVGs and drop them e.g. on a Mac into Pages.app to scale and print them. A Webbrowser can display them too.  
-make-labels.sh takes options to reconfigure input-, output-directory and template.
-make-pdf.sh puts 10 svgs on one pdf page
 
-Hint: Get PostIt full-page paper and print the labels onto it. They can be easily be changed later. Coat the labels using a clear paint spray.
+### make-labels.sh 
+
+Creates SVG files for each JSON input file using a mustache template.
+
+    * -i directory ... change input directory from default jsons
+    * -o directory ... change output directory from default svgs
+    * -t file ... change mustache template from default ApothecaryLabel.mustache
+
+### make-pdf.sh
+
+Puts SVGs into a PDF file for printing.
+
+    * -g specifies ... the geometry e.g. 2x 3x 4x for how many columns of labels. This determines the resulting size.
+    * -i directory ... changes the input directory from ./jsons to your choice
+    * -f file1,file2,... optionally manually select files to (re)print
+
+### Hints
+
+Get PostIt full-page paper and print the labels onto it. They can be easily be changed later. Coat the labels using a clear paint spray.
 
 ## INSTALLATION
 
