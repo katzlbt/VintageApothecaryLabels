@@ -35,8 +35,8 @@ TILE_GEOMETRY="2x5"
 DENSITY=300
 
 # The size of the final page. ImageMagick understands common paper sizes.
-# Use "A4" or "Letter".
-PAGE_SIZE="A4"
+# https://imagemagick.org/script/command-line-options.php?#page
+PAGE_SIZE="a4" # This does not work as intended by AI and manpage
 
 # The background color of the page.
 BACKGROUND_COLOR="white"
@@ -105,7 +105,7 @@ montage \
   -tile "$TILE_GEOMETRY" \
   -geometry "+$SPACING+$SPACING" \
   "${SVG_FILES[@]}" \
-  -page "$PAGE_SIZE" \
+  -page "$PAGE_SIZE" \ # This does not work as intended by AI and manpage
   -background "$BACKGROUND_COLOR" \
   "$OUTPUT_FILE"
 

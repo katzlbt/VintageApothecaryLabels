@@ -22,12 +22,17 @@ Creates SVG files for each JSON input file using a mustache template.
 
 ### make-pdf.sh
 
-Puts SVGs into a PDF file for printing.
+Puts SVGs into a PDF file for printing. MacOS auto-scales the PDF by 400% to fit the page.
 
     -g specifies ... the geometry e.g. 2x 3x 4x for how many columns of labels. This determines the resulting size.
     -i directory ... changes the input directory from ./jsons to your choice
     -f file1,file2,... optionally manually select files to (re)print
 
+    3x8 fits 24 labels perfectly (6x3 cm) per page (adding pages if needed)
+    2x5 fits 10 labels (8.5x4.25 cm) per page
+    2x6 fits 12 labels per page
+    4x  makes rather small labels
+    
 ### Hints
 
 Get PostIt full-page paper and print the labels onto it. Use a paper cutter to split them. They can easily be changed later. Coat the labels using a clear paint spray to fixate the toner and make them washable.
