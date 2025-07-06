@@ -105,7 +105,7 @@ montage \
   -tile "$TILE_GEOMETRY" \
   -geometry "+$SPACING+$SPACING" \
   "${SVG_FILES[@]}" \
-  -page "$PAGE_SIZE" \ # This does not work as intended by AI and manpage
+  -page "$PAGE_SIZE" \
   -background "$BACKGROUND_COLOR" \
   "$OUTPUT_FILE"
 
