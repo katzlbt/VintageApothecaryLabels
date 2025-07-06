@@ -1,5 +1,5 @@
 # VintageApothecaryLabels
-Bash scripts to create Vintage Apothecary Labels as SVG from mustache templates for printing labels. 
+Very simple bash scripts to create Vintage Apothecary Labels (or actually any other labels, too) as SVG from mustache templates for printing labels. If you also install ImageMagick the second script can combine the SVGs into a PDF.
 
 Requires mustache (https://mustache.github.io/) template command. Optionally have ImageMagick ready to create a pdf.
 
@@ -16,21 +16,21 @@ Simply run ./make-labels.sh to create the SVGs and drop them e.g. on a Mac into 
 
 Creates SVG files for each JSON input file using a mustache template.
 
-    * -i directory ... change input directory from default jsons
-    * -o directory ... change output directory from default svgs
-    * -t file ... change mustache template from default ApothecaryLabel.mustache
+    -i directory ... change input directory from default jsons
+    -o directory ... change output directory from default svgs
+    -t file ... change mustache template from default ApothecaryLabel.mustache
 
 ### make-pdf.sh
 
 Puts SVGs into a PDF file for printing.
 
-    * -g specifies ... the geometry e.g. 2x 3x 4x for how many columns of labels. This determines the resulting size.
-    * -i directory ... changes the input directory from ./jsons to your choice
-    * -f file1,file2,... optionally manually select files to (re)print
+    -g specifies ... the geometry e.g. 2x 3x 4x for how many columns of labels. This determines the resulting size.
+    -i directory ... changes the input directory from ./jsons to your choice
+    -f file1,file2,... optionally manually select files to (re)print
 
 ### Hints
 
-Get PostIt full-page paper and print the labels onto it. They can be easily be changed later. Coat the labels using a clear paint spray.
+Get PostIt full-page paper and print the labels onto it. Use a paper cutter to split them. They can easily be changed later. Coat the labels using a clear paint spray to fixate the toner and make them washable.
 
 ## INSTALLATION
 
