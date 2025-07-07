@@ -22,7 +22,7 @@ Creates SVG files for each JSON input file using a mustache template.
 
 ### make-pdf.sh
 
-Puts SVGs into a PDF file for printing. MacOS auto-scales the PDF by 400% to fit the page.
+Puts SVGs into a PDF file for printing. The resulting PDF needs to be scaled to fit a printer page. I cannot get montage to do this correctly. MacOS auto-scales the PDF to fit the page when printing.
 
     -g specifies ... the geometry e.g. 2x 3x 4x for how many columns of labels. This determines the resulting size.
     -i directory ... changes the input directory from ./jsons to your choice

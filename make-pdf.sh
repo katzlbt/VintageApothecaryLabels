@@ -27,16 +27,11 @@ INPUT_DIR="svgs"
 OUTPUT_FILE="print_sheet.pdf"
 
 # The layout of the images on the page (columns x rows).
-# For 10 images, '2x5' or '5x2' are good choices.
-TILE_GEOMETRY="2x5"
+TILE_GEOMETRY="3x8"
 
 # The resolution (in DPI) to use when rendering the SVGs.
 # 300 is a standard for good print quality. 150 is good for proofs.
-DENSITY=300
-
-# The size of the final page. ImageMagick understands common paper sizes.
-# https://imagemagick.org/script/command-line-options.php?#page
-PAGE_SIZE="a4" # This does not work as intended by AI and manpage
+DENSITY=600
 
 # The background color of the page.
 BACKGROUND_COLOR="white"
@@ -51,6 +46,7 @@ SPACING=50
 # 1. Inform the user what the script is doing.
 echo "Searching for SVG files in: $INPUT_DIR"
 
+# change to INPUT_DIR for getting filenames without path
 cd "$INPUT_DIR"
 
 # 2. Find all .svg files in the input directory.
@@ -81,7 +77,7 @@ while getopts i:g:f: OPT; do
             ;;
         *)
             echo $0 "-i input directory (default: svgs)"
-            echo $0 "-g tile geometry (default: 2x5 or try -g 3x for smaller labels)"
+            echo $0 "-g tile geometry (default: 3x8 or try -g 2x5 for bigger labels)"
             echo $0 "-f file1.svg,file2.svg,file3.svg (optionally select files)"
             exit 0
             ;;
@@ -97,7 +93,6 @@ echo "Using ${SVG_FILES[@]} SVG files. Creating montage..."
 #    -geometry +$SPACING+$SPACING: This adds a border around each tile.
 #      The images are resized to fit within their tile while preserving aspect ratio.
 #    "${SVG_FILES[@]}": The list of input files. Quoting handles spaces.
-#    -page "$PAGE_SIZE": Sets the media size for the output PDF.
 #    -background "$BACKGROUND_COLOR": Sets the page background.
 #    "$OUTPUT_FILE": The name of the file to save.
 montage \
@@ -105,7 +100,6 @@ montage \
   -tile "$TILE_GEOMETRY" \
   -geometry "+$SPACING+$SPACING" \
   "${SVG_FILES[@]}" \
-  -page "$PAGE_SIZE" \
   -background "$BACKGROUND_COLOR" \
   "$OUTPUT_FILE"
 
