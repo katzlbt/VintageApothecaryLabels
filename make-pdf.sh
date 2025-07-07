@@ -24,7 +24,7 @@ INPUT_DIR="svgs"
 
 # The name of the final output file. PDF is great for printing.
 # You can also use .png or .jpg if you prefer.
-OUTPUT_FILE="print_sheet.pdf"
+OUTPUT_FILE="2print.pdf"
 
 # The layout of the images on the page (columns x rows).
 TILE_GEOMETRY="3x8"
@@ -41,27 +41,6 @@ SPACING=50
 
 # --- END OF CONFIGURATION ---
 
-# --- SCRIPT LOGIC ---
-
-# 1. Inform the user what the script is doing.
-echo "Searching for SVG files in: $INPUT_DIR"
-
-# change to INPUT_DIR for getting filenames without path
-cd "$INPUT_DIR"
-
-# 2. Find all .svg files in the input directory.
-# We use an array to handle filenames with spaces correctly.
-# The 'shopt -s nullglob' ensures that if no files are found, the array is empty.
-shopt -s nullglob
-SVG_FILES=(*.svg)
-shopt -u nullglob # Turn off nullglob to restore default behavior
-
-# 3. Check if any SVG files were found.
-if [ ${#SVG_FILES[@]} -eq 0 ]; then
-  echo "Error: No SVG files found in '$INPUT_DIR'."
-  exit 1
-fi
-
 # --- OPTIONS ---
 
 while getopts i:g:f: OPT; do
@@ -76,13 +55,38 @@ while getopts i:g:f: OPT; do
             SVG_FILES=(${OPTARG//,/ });
             ;;
         *)
-            echo $0 "-i input directory (default: svgs)"
+            echo $0 "-i input directory (default: svgs, eg. 2print.nogit)"
             echo $0 "-g tile geometry (default: 3x8 or try -g 2x5 for bigger labels)"
             echo $0 "-f file1.svg,file2.svg,file3.svg (optionally select files)"
             exit 0
             ;;
     esac
 done
+
+# --- SCRIPT LOGIC ---
+
+if [ ${#SVG_FILES[@]} -eq 0 ]; then
+
+    # 1. Inform the user what the script is doing.
+    echo "Searching for SVG files in: $INPUT_DIR"
+    
+    # change to INPUT_DIR for getting filenames without path
+    cd "$INPUT_DIR"
+    
+    # 2. Find all .svg files in the input directory.
+    # We use an array to handle filenames with spaces correctly.
+    # The 'shopt -s nullglob' ensures that if no files are found, the array is empty.
+    shopt -s nullglob
+    SVG_FILES=(*.svg)
+    shopt -u nullglob # Turn off nullglob to restore default behavior
+    
+    # 3. Check if any SVG files were found.
+    if [ ${#SVG_FILES[@]} -eq 0 ]; then
+      echo "Error: No SVG files found in '$INPUT_DIR'."
+      exit 1
+    fi
+
+fi
 
 echo "Using ${SVG_FILES[@]} SVG files. Creating montage..."
 
