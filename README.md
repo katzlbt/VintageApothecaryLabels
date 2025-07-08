@@ -32,10 +32,14 @@ Puts SVGs into a PDF file for printing. The resulting PDF needs to be scaled to 
     2x5 fits 10 labels (8.5x4.25 cm) per page
     2x6 fits 12 labels per page
     4x  makes rather small labels
-    
+
+### split-merge-json.sh
+
+Optional: This script can merge (-m) all json files of a directory into a single file for translation/processing with an AI and split (-s) it again into single files for template processing. Requires jq installed.
+
 ### Hints
 
-Get PostIt full-page paper and print the labels onto it. Use a paper cutter to split them. They can easily be changed later. Coat the labels using a clear paint spray to fixate the toner and make them washable.
+Get PostIt full-page paper and print the labels onto it. Use a paper cutter to split them. They can easily be changed later. Coat the labels using a clear paint spray (e.g. Nigrin Klarlack Spray) to fixate the toner and make them washable.
 
 ## INSTALLATION
 
