@@ -46,6 +46,6 @@ mkdir "$OUTPUT_DIR"
 for FP in "${JSON_FILES[@]}" ; do
     FILE=$(basename "$FP")
     echo "Processing $INPUT_DIR/$FILE ..."
-    cat "$INPUT_DIR"/$FILE | sed "s|\$FONT|$FONT|g" 
-    cat "$INPUT_DIR"/$FILE | sed "s|\$FONT|$FONT|g" | $MUSTACHE > "$OUTPUT_DIR"/"${FILE%.*}.svg"
+    cat "$INPUT_DIR"/$FILE | sed "s|\"font\": 1|$FONT|g" 
+    cat "$INPUT_DIR"/$FILE | sed "s|\"font\": 1|$FONT|g" | $MUSTACHE > "$OUTPUT_DIR"/"${FILE%.*}.svg"
 done
