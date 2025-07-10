@@ -7,10 +7,10 @@ Requires mustache (https://mustache.github.io/) template command. Optionally hav
 
 ## USAGE
 
-Create a JSON file in ./jsons containing: ```{"label":"Folia Lauri", "sublabel":"folia integra", $FONT} or a two-line version {"label1":"Schinus", "label2":"Terebinthifolia", "sublabel":"grana integra", $FONT}```. 
+Create a JSON file in ./jsons containing: ```{"label":"Folia Lauri", "sublabel":"folia integra", "font": 1} or a two-line version {"label1":"Schinus", "label2":"Terebinthifolia", "sublabel":"grana integra", "font": 1}```. 
 The Filename will be used to create the SVG from the template ./ApothecaryLabel.mustache
-The font can be globally configured in the script.
-Simply run ./make-labels.sh to create the SVGs and drop them e.g. on a Mac into Pages.app to scale and print them. A Webbrowser can display them too.  
+The font can be globally configured in the script and is replaced with sed (which is a hack that needs the space, or adjusted individually).
+Simply run ./make-labels.sh to create the SVGs and drop them e.g. on a Mac into Pages.app to scale and print them. A Webbrowser can display them too. If you have ImageMagick, make-pdf.sh can create a PDF sheet.  
 
 ### make-labels.sh 
 
@@ -47,7 +47,7 @@ Download a precompiled binary mustache release (easiest) and put it on your path
 
 ImageMagick install instructions: see make-pdf.sh comment by Gemini.
 
-Get https://www.dafontfree.io/copperplate-font/ or use a different one.
+Download and install the Copperplate font or use a different one.
 
 ## HELP
 
