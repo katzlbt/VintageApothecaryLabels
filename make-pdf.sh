@@ -43,9 +43,9 @@ SPACING=50
 
 # --- OPTIONS ---
 
-while getopts i:g:f: OPT; do
+while getopts d:g:f:o: OPT; do
     case $OPT in
-        i)
+        d)
             INPUT_DIR=$OPTARG
             ;;
         g)
@@ -54,10 +54,14 @@ while getopts i:g:f: OPT; do
         f) # select specific files
             SVG_FILES=(${OPTARG//,/ });
             ;;
+        o)
+            OUTPUT_FILE=$OPTARG
+            ;;
         *)
-            echo $0 "-i input directory (default: svgs, eg. 2print.nogit)"
+            echo $0 "-d input directory containing SVG files (default: svgs, eg. 2print.nogit)"
             echo $0 "-g tile geometry (default: 3x8 or try -g 2x5 for bigger labels)"
             echo $0 "-f file1.svg,file2.svg,file3.svg (optionally select files)"
+            echo $0 "-o 2print.pdf (default)"
             exit 0
             ;;
     esac
@@ -65,14 +69,14 @@ done
 
 # --- SCRIPT LOGIC ---
 
+# change to INPUT_DIR for getting filenames without path
+cd "$INPUT_DIR"
+
 if [ ${#SVG_FILES[@]} -eq 0 ]; then
 
     # 1. Inform the user what the script is doing.
     echo "Searching for SVG files in: $INPUT_DIR"
-    
-    # change to INPUT_DIR for getting filenames without path
-    cd "$INPUT_DIR"
-    
+        
     # 2. Find all .svg files in the input directory.
     # We use an array to handle filenames with spaces correctly.
     # The 'shopt -s nullglob' ensures that if no files are found, the array is empty.

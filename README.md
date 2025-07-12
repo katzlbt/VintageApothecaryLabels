@@ -24,11 +24,12 @@ Creates SVG files for each JSON input file using a mustache template.
 
 ### make-pdf.sh
 
-Puts SVGs into a PDF file for printing. The resulting PDF needs to be scaled to fit a printer page. I cannot get montage to do this correctly. MacOS auto-scales the PDF to fit the page when printing.
+Puts SVGs into a PDF file for printing. Repeat the same name with -f to add identical labels. The resulting PDF needs to be scaled to fit a printer page. I cannot get montage to do this correctly. MacOS auto-scales the PDF to fit the page when printing.
 
     -g specifies ... the geometry e.g. 2x 3x 4x for how many columns of labels. This determines the resulting size.
-    -i directory ... changes the input directory from ./jsons to your choice
+    -d directory ... changes the input directory from ./svgs to your choice
     -f file1,file2,... optionally manually select files to (re)print
+    -o output.png ... created inside -d (default 2print.pdf)
 
     3x8 fits 24 labels perfectly (6x3 cm) per page (adding pages if needed)
     2x5 fits 10 labels (8.5x4.25 cm) per page

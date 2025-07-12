@@ -18,7 +18,7 @@ while getopts d:o:t: OPT; do
             TEMPLATE=$OPTARG
             ;;
         *)
-            echo $0 "-i input-directory (default: jsons/latin-spices)"
+            echo $0 "-d input-directory (default: jsons/latin-spices)"
             echo $0 "-o output-directory (default: svgs)"
             echo $0 "-t template.mustache (default: ApothecaryLabel.mustache)"
             ;;
