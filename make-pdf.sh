@@ -53,6 +53,13 @@ while getopts d:g:f:o: OPT; do
             ;;
         f) # select specific files
             SVG_FILES=(${OPTARG//,/ });
+            
+            # add .svg if it is missing (shorthand)
+            ARRAY=()
+            for FILE in "${SVG_FILES[@]}" ; do
+                ARRAY+=("${FILE%.*}.svg")
+            done
+            SVG_FILES=(${ARRAY[@]})
             ;;
         o)
             OUTPUT_FILE=$OPTARG
@@ -60,7 +67,7 @@ while getopts d:g:f:o: OPT; do
         *)
             echo $0 "-d input directory containing SVG files (default: svgs, eg. 2print.nogit)"
             echo $0 "-g tile geometry (default: 3x8 or try -g 2x5 for bigger labels)"
-            echo $0 "-f file1.svg,file2.svg,file3.svg (optionally select files)"
+            echo $0 "-f file1,file2,file3 (optionally select files, can omit extension)"
             echo $0 "-o 2print.pdf (default)"
             exit 0
             ;;
@@ -89,7 +96,6 @@ if [ ${#SVG_FILES[@]} -eq 0 ]; then
       echo "Error: No SVG files found in '$INPUT_DIR'."
       exit 1
     fi
-
 fi
 
 echo "Using ${SVG_FILES[@]} SVG files. Creating montage..."
