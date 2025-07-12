@@ -1,14 +1,14 @@
 #!/bin/bash
 
-INPUT_DIR=jsons # YAML or JSON in *.yaml
+INPUT_DIR=jsons/latin-spices # YAML or JSON in *.yaml
 OUTPUT_DIR=svgs
 
 TEMPLATE=ApothecaryLabel.mustache
 FONT='"font":{"label-size":22, "sublabel-size":16, "family":"Copperplate"}'
 
-while getopts i:o:t: OPT; do
+while getopts d:o:t: OPT; do
     case $OPT in
-        i)
+        d)
             INPUT_DIR=$OPTARG
             ;;
         o)
@@ -18,7 +18,7 @@ while getopts i:o:t: OPT; do
             TEMPLATE=$OPTARG
             ;;
         *)
-            echo $0 "-i input-directory (default: jsons)"
+            echo $0 "-i input-directory (default: jsons/latin-spices)"
             echo $0 "-o output-directory (default: svgs)"
             echo $0 "-t template.mustache (default: ApothecaryLabel.mustache)"
             ;;

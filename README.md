@@ -1,5 +1,7 @@
-# VintageApothecaryLabels
-Very simple bash scripts to create Vintage Apothecary Labels (or actually any other labels, too) as SVG from mustache templates for printing labels. If you also install ImageMagick the second script can combine the SVGs into a PDF.
+# Vintage Apothecary Labels
+Very simple bash scripts with as few as possible dependencies to create Vintage Apothecary Labels (or actually any other labels, too) as JSON compiled to SVG using mustache templates for printing the labels. If you also install ImageMagick the second script can combine the SVGs into a PDF.
+Currently included labels sets:
+  * Latin kitchen spices
 
 Requires mustache (https://mustache.github.io/) template command. Optionally have ImageMagick ready to create a pdf.
 
@@ -16,7 +18,7 @@ Simply run ./make-labels.sh to create the SVGs and drop them e.g. on a Mac into 
 
 Creates SVG files for each JSON input file using a mustache template.
 
-    -i directory ... change input directory from default jsons
+    -d directory ... change input directory from default jsons
     -o directory ... change output directory from default svgs
     -t file ... change mustache template from default ApothecaryLabel.mustache
 
