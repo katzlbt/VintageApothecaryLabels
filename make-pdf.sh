@@ -37,7 +37,7 @@ DENSITY=600
 BACKGROUND_COLOR="white"
 
 # The spacing (in pixels) to add around each image tile.
-SPACING=50
+SPACING=80
 
 # --- END OF CONFIGURATION ---
 
