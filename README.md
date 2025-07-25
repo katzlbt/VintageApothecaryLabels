@@ -55,3 +55,10 @@ Download and install the Copperplate font or use a different one.
 ## HELP
 
 If you want to help/improve, make a new label design, please make a new mustache template as pull-request. ```make-labels.sh -t NewDesign.mustache``` should do the trick. Be aware that ImageMagick has some rendering issues with SVGs.
+
+## jq
+
+```
+ ./split-merge-json.sh -m -d jsons/latin-spices/
+ jq -c '.[] | select(.aka) | .aka + ": " + .label + .label1 + " " + .label2' jsons-merged.nogit.json | sort | sed -e "s/\"//g"
+```
