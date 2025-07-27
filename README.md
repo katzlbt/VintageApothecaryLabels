@@ -59,6 +59,12 @@ If you want to help/improve, make a new label design, please make a new mustache
 ## jq
 
 ```
+ # merge all jsons for jq processing
  ./split-merge-json.sh -m -d jsons/latin-spices/
- jq -c '.[] | select(.aka) | .aka + ": " + .label + .label1 + " " + .label2' jsons-merged.nogit.json | sort | sed -e "s/\"//g"
-```
+ 
+ # extract german cheat sheet
+ jq -c '.[] | select(.aka) | .aka + ", " + .label + .label1 + " " + .label2' jsons-merged.nogit.json | sed -e "s/\"//g" | (while IFS=, read -r col1 col2 col3 ; do echo ${col2}"," $col3 ; done) | sort
+
+ # extract german cheat sheet
+ jq -c '.[] | select(.aka) | .aka + ", " + .label + .label1 + " " + .label2' jsons-merged.nogit.json | sed -e "s/\"//g" | (while IFS=, read -r col1 col2 col3 ; do echo ${col3}"," $col2 ; done) | sort
+ ```
