@@ -36,6 +36,8 @@ Puts SVGs into a PDF file for printing. Repeat the same name with -f to add iden
     2x6 fits 12 labels per page
     4x  makes rather small labels
 
+You can change the extension to PNG if you want to use Word/Pages etc. for scaling before printing.
+    
 ### split-merge-json.sh
 
 Optional: This script can merge (-m) all json files of a directory into a single file for translation/processing with an AI and split (-s) it again into single files for template processing. Requires jq installed.

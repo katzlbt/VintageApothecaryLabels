@@ -1,0 +1,52 @@
+<svg width="38mm" height="38mm" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    SVG Label
+    Overall dimensions: 38mm x 38mm
+  -->
+
+  <!-- Outer Circle -->
+  <!-- 
+    - Diameter: 35mm (Radius: 17.5mm)
+    - Centered at (19, 19)
+    - Stroke width: 3mm
+  -->
+  <circle 
+    cx="190" 
+    cy="190" 
+    r="175" 
+    stroke="black" 
+    stroke-width="7" 
+    fill="none" 
+  />
+
+  <!-- Inner Circle -->
+  <!-- 
+    - Offset from outer circle by 5mm, so radius is 17.5 - 5 = 12.5mm
+    - Centered at (19, 19)
+    - Stroke width: 1mm
+  -->
+  <circle 
+    cx="190" 
+    cy="190" 
+    r="162" 
+    stroke="black" 
+    stroke-width="2" 
+    fill="none" 
+  />
+
+  <!-- Text Block -->
+  <!-- 
+    - Centered horizontally using text-anchor="middle"
+    - Centered vertically as a group
+    - Font: sans-serif for clean readability
+    1 Line (10 chars): y="170" font-size="60", y="230" font-size="40"
+  -->
+  <g font-family="sans-serif" text-anchor="middle" dominant-baseline="middle">
+    <!-- First line of text -->
+    <text x="190" y="170" font-size="60">123456789</text>
+    
+    <!-- Second line of text, smaller font -->
+    <text x="190" y="230" font-size="40">2025</text>
+  </g>
+
+</svg>
