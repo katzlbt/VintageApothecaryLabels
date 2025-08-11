@@ -18,6 +18,9 @@
 # --- CONFIGURATION ---
 # --- You can change these variables to fit your needs ---
 
+MAGICK=""
+# MAGICK="magick" # ImageMagick7
+
 # Directory where your 10 SVG files are located.
 # Use $1 or default "svgs" for the current directory.
 INPUT_DIR="svgs"
@@ -32,6 +35,8 @@ TILE_GEOMETRY="3x8"
 # The resolution (in DPI) to use when rendering the SVGs.
 # 300 is a standard for good print quality. 150 is good for proofs.
 DENSITY=600
+CANVAS_W=$((210*24)) # 600/25.4 = 23.6 this is DIN A4
+CANVAS_H=$((297*24)) # 600/25.4 = 23.6
 
 # The background color of the page.
 BACKGROUND_COLOR="white"
@@ -43,7 +48,7 @@ SPACING=80
 
 # --- OPTIONS ---
 
-while getopts d:g:f:o: OPT; do
+while getopts d:g:f:o:p OPT; do
     case $OPT in
         d)
             INPUT_DIR=$OPTARG
@@ -64,11 +69,15 @@ while getopts d:g:f:o: OPT; do
         o)
             OUTPUT_FILE=$OPTARG
             ;;
+        p)
+            MAKE_PAGE=1
+            ;;
         *)
             echo $0 "-d input directory containing SVG files (default: svgs, eg. 2print.nogit)"
             echo $0 "-g tile geometry (default: 3x8 or try -g 2x5 for bigger labels)"
             echo $0 "-f file1,file2,file3 (optionally select files, can omit extension)"
             echo $0 "-o 2print.pdf (default)"
+            echo $0 "-p ... create a DINA4 page and place labels on top, MacOS always centers them vert.!"
             exit 0
             ;;
     esac
@@ -109,13 +118,20 @@ echo "Using ${SVG_FILES[@]} SVG files. Creating montage..."
 #    "${SVG_FILES[@]}": The list of input files. Quoting handles spaces.
 #    -background "$BACKGROUND_COLOR": Sets the page background.
 #    "$OUTPUT_FILE": The name of the file to save.
-montage \
+$MAGICK montage \
   -density "$DENSITY" \
   -tile "$TILE_GEOMETRY" \
   -geometry "+$SPACING+$SPACING" \
   "${SVG_FILES[@]}" \
   -background "$BACKGROUND_COLOR" \
   "$OUTPUT_FILE"
+
+# optionally place on a physical page on top
+if [ $MAKE_PAGE -eq 1 ]; then
+    $MAGICK convert -size $CANVAS_W"x"$CANVAS_H xc:white -background white \
+      -density "$DENSITY" "$OUTPUT_FILE" -resize $CANVAS_W"x" \
+      -gravity North -composite "$OUTPUT_FILE"
+fi
 
 # 5. Check if the command was successful and provide feedback.
 if [ $? -eq 0 ]; then
