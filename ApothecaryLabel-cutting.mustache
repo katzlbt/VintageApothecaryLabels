@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="218" viewBox="-10 -10 222 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    Vintage Apothecary Label
+    - The viewBox is padded by 1.5 units (half of the outer stroke-width) to prevent clipping.
+  -->
+  <style>
+    .label-text {
+      font-family: "{{font.family}}", serif;
+      font-size: {{font.label-size}}px;
+    }
+    .sublabel-text {
+      font-family: "{{font.family}}", serif;
+      font-size: {{font.sublabel-size}}px;
+    }
+  </style>
+  
+  <!-- Outer thick border -->
+  <path d="m 13.5,0
+         l 173,0
+         l 13.5,13.5
+         l 0,73
+         l -13.5,13.5
+         l -173,0
+         l -13.5,-13.5
+         l 0,-73
+         z
+
+         M 14.98492424049175,2.842462120245875
+         l 170.0301515190165,0
+         l 12.01507575950825,12.01507575950825
+         l 0,70.0301515190165
+         l -12.01507575950825,12.01507575950825
+         l -170.0301515190165,0
+         l -12.01507575950825,-12.01507575950825
+         l 0,-70.0301515190165
+         z" fill="black" stroke="none" fill-rule="evenodd" />
+        
+  <!-- Inner thin border (manually calculated path, inset) -->
+  <path d="M 16.681980515339465,6.090990257669732
+      l 166.63603896932108,0
+      l 10.318019484660535,10.318019484660535
+      l 0,66.63603896932108
+      l -10.318019484660535,10.318019484660535
+      l -166.63603896932108,0
+      l -10.318019484660535,-10.318019484660535
+      l 0,-66.63603896932108
+      z"
+        fill="none" stroke="black" stroke-width="1" />
+        
+   <!-- Laser Cutting thin border (manually calculated path, outset) -->
+   <path d="M 8.550252531694166,-9.474873734152917
+      l 182.89949493661166,0
+      l 18.449747468305834,18.449747468305834
+      l 0,82.89949493661166
+      l -18.449747468305834,18.449747468305834
+      l -182.89949493661166,0
+      l -18.449747468305834,-18.449747468305834
+      l 0,-82.89949493661166
+      z" fill="none" stroke="red" />
+
+         
+  <!-- TEXT CONTENT -->
+  
+  {{#label}}
+  <!-- First line of text -->
+  <text x="100" y="48"
+        class="label-text" text-anchor="middle" fill="black">
+    {{label}}
+  </text>
+  
+  <!-- Second line of text -->
+  <text x="100" y="70"
+        class="sublabel-text" text-anchor="middle" fill="black">
+    {{sublabel}}
+  </text>
+  {{/label}}
+
+  {{#label1}}
+  <!-- 2 lines of text -->
+  <text x="100" y="30"
+        class="label-text" text-anchor="middle" fill="black">
+    {{label1}}
+  </text>
+  <text x="100" y="54"
+        class="label-text" text-anchor="middle" fill="black">
+    {{label2}}
+  </text>
+  
+  <!-- Second line of text -->
+  <text x="100" y="76"
+        class="sublabel-text" text-anchor="middle" fill="black">
+    {{sublabel}}
+  </text>
+  {{/label1}}
+
+
+</svg>
