@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- 
+    Vintage Apothecary Label
+    - The viewBox is padded by 1.5 units (half of the outer stroke-width) to prevent clipping.
+  -->
+  <style>
+    .label-text {
+      font-family: "Copperplate", serif;
+      font-size: 22px;
+    }
+    .sublabel-text {
+      font-family: "Copperplate", serif;
+      font-size: 16px;
+    }
+  </style>
+  
+  <!-- Outer thick border -->
+  <path d="m 13.5,0
+         l 173,0
+         l 13.5,13.5
+         l 0,73
+         l -13.5,13.5
+         l -173,0
+         l -13.5,-13.5
+         l 0,-73
+         z
+
+         M 14.98492424049175,2.842462120245875
+         l 170.0301515190165,0
+         l 12.01507575950825,12.01507575950825
+         l 0,70.0301515190165
+         l -12.01507575950825,12.01507575950825
+         l -170.0301515190165,0
+         l -12.01507575950825,-12.01507575950825
+         l 0,-70.0301515190165
+         z" fill="black" stroke="none" fill-rule="evenodd" />
+        
+  <!-- Inner thin border (manually calculated path, inset) -->
+  <path d="M 16.61126983722081,5.955634918610405
+      l 166.77746032555837,0
+      l 10.38873016277919,10.38873016277919
+      l 0,66.77746032555838
+      l -10.38873016277919,10.38873016277919
+      l -166.77746032555837,0
+      l -10.38873016277919,-10.38873016277919
+      l 0,-66.77746032555838
+      z
+      
+      M 16.89411254969543,6.497056274847713
+      l 166.21177490060916,0
+      l 10.105887450304571,10.105887450304571
+      l 0,66.21177490060914
+      l -10.105887450304571,10.105887450304571
+      l -166.21177490060916,0
+      l -10.105887450304571,-10.105887450304571
+      l 0,-66.21177490060914
+      z"
+      fill="black" stroke="none" fill-rule="evenodd" />
+        
+  <!-- TEXT CONTENT -->
+  
+
+  <!-- 2 lines of text -->
+  <text x="100" y="30"
+        class="label-text" text-anchor="middle" fill="black">
+    Origanum
+  </text>
+  <text x="100" y="54"
+        class="label-text" text-anchor="middle" fill="black">
+    Majorana
+  </text>
+  
+  <!-- Second line of text -->
+  <text x="100" y="76"
+        class="sublabel-text" text-anchor="middle" fill="black">
+    Majoran gerebelt
+  </text>
+
+
+</svg>

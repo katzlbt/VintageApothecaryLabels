@@ -9,6 +9,8 @@ Requires mustache (https://mustache.github.io/) template command. Optionally hav
 
 ## USAGE
 
+For impatient folks, I prepared the directory svgs-desub-examples for direct SVG downloads. This is usually generated content but the SVGs may be useful directly without installation.  
+
 Create a JSON file in ./jsons containing: ```{"label":"Folia Lauri", "sublabel":"folia integra", "font": 1} or a two-line version {"label1":"Schinus", "label2":"Terebinthifolia", "sublabel":"grana integra", "font": 1}```. 
 The Filename will be used to create the SVG from the template ./ApothecaryLabel.mustache
 The font can be globally configured in the script and is replaced with sed (which is a hack that needs the space, or adjusted individually).
